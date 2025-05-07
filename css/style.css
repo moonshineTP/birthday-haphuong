@@ -1,13 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico');
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
 body {
-  background: #E5E5E5;
-  background-image: url("bg.jpg");
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      background-image: url("../bg.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      image-rendering: crisp-edges;
+      overflow: hidden;
 }
 
 #card-front {
@@ -410,6 +420,23 @@ font-family: 'Lobster', cursive;
           animation-iteration-count: 1;
 }
 
+.header-message {
+      background: transparent;
+      color: red;
+      font-family: 'Pacifico', sans-serif;
+      font-size: 28px;
+      font-weight: bold;
+      padding: 5px 5px;
+      border-radius: 5px;
+      text-align: center;
+      transition: color 2s ease, transform 2s ease;
+}
+
+.header-message:hover {
+      color: darkred;
+      transform: scale(1.05);
+}
+
 @-webkit-keyframes fade-in {
   from {
     opacity: 0;
@@ -425,5 +452,40 @@ font-family: 'Lobster', cursive;
   }
   to {
     opacity: 1;
+  }
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #f26b38; /* Confetti color */
+  opacity: 0.8;
+  border-radius: 50%;
+  animation: floatConfetti 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Keyframe for realistic surge, float, and dive motion */
+@keyframes floatConfetti {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.9;
+  }
+  20% {
+    transform: translateY(-60px) translateX(15px) rotate(20deg); /* Surge up */
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-40px) translateX(-10px) rotate(100deg); /* Float */
+    opacity: 0.7;
+  }
+  80% {
+    transform: translateY(50px) translateX(10px) rotate(180deg); /* Begin descent */
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(120px) translateX(-20px) rotate(360deg); /* Dive down */
+    opacity: 0.2;
   }
 }
