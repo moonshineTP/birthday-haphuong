@@ -20,6 +20,10 @@ body {
       overflow: hidden;
 }
 
+#background-music {
+  display: none;
+}
+
 #card-front {
   color: #FFDFDF;
   z-index: 10;

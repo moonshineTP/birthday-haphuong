@@ -9,21 +9,27 @@
       timer = null;
   console.log('wat', card);
 
+  var audio = $('background-music');
+
   openB.addEventListener('click', function () {
     card.setAttribute('class', 'open-half');
     if (timer) clearTimeout(timer);
     timer = setTimeout(function () {
       card.setAttribute('class', 'open-fully');
       timer = null;
+      audio.play().catch(error => console.error('Error playing audio:', error));
     }, 1000);
   });
 
   closeB.addEventListener('click', function () {
     card.setAttribute('class', 'close-half');
-    if (timer) clearTimeout(timer);  // ✅ fixed typo here
+    if (timer) clearTimeout(timer);
     timer = setTimeout(function () {
       card.setAttribute('class', '');
       timer = null;
+
+      audio.pause();
+      audio.currentTime = 0;
     }, 1000);
   });
 })();
@@ -76,4 +82,5 @@ function createConfetti(amount = 100) {
 window.addEventListener('DOMContentLoaded', () => {
   createConfetti(80);
 });
+
 
